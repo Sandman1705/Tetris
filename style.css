@@ -1,0 +1,39 @@
+#wrapper
+{
+	height: 600px;
+	width: 300px;
+	background-color: gray;
+	margin-left: auto;
+	margin-right: auto;
+	border: 1px solid black;
+}
+
+div.block
+{
+	/* TODO 
+	height
+	width
+			*/
+	
+	line-height: 0px;
+	display: inline-block;
+	border: 1px solid black;
+	box-sizing: border-box;
+	vertical-align: top;
+	height: 30px;
+	width: 30px;
+	padding: 0px;
+	margin: 0px;
+}
+
+div.activeBlock
+{
+	background-color: aqua;
+	border: 1px solid blue;
+	box-sizing: border-box;
+}
+
+div.inactiveBlock
+{
+	background-color: gray;
+}

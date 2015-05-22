@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	var height = $("#wrapper").height();
-	var width = $("#wrapper").width();
+	var width = $("#wrapper").width();		// not used
 	
 	var numY = 23;
 	var numX = 12;
@@ -64,11 +64,43 @@ $(document).ready(function(){
 	
 	var figureX = new Array(4);
 	var figureY = new Array(4);
-	figureX[0] = 4; figureY[0] = 4;
-	figureX[1] = 4; figureY[1] = 5;
-	figureX[2] = 5; figureY[2] = 4;
-	figureX[3] = 5; figureY[3] = 5;
-	
+
+	// x x
+	// x x
+	function createFigure1(){
+		figureX[0] = 5; figureY[0] = 1;
+		figureX[1] = 6; figureY[1] = 2;
+		figureX[2] = 6; figureY[2] = 1;
+		figureX[3] = 5; figureY[3] = 2;
+	}
+
+	//    x
+	//  x x x
+	function createFigure2(){
+		figureX[0] = 5; figureY[0] = 1;
+		figureX[1] = 6; figureY[1] = 2;
+		figureX[2] = 4; figureY[2] = 2;
+		figureX[3] = 5; figureY[3] = 2;
+	}
+
+	//	x x
+	//    x x
+	function createFigure3(){
+		figureX[0] = 5; figureY[0] = 1;
+		figureX[1] = 6; figureY[1] = 2;
+		figureX[2] = 4; figureY[2] = 1;
+		figureX[3] = 5; figureY[3] = 2;
+	}
+
+	// x x x x
+	function createFigure4(){
+		figureX[0] = 4; figureY[0] = 1;
+		figureX[1] = 5; figureY[1] = 1;
+		figureX[2] = 6; figureY[2] = 1;
+		figureX[3] = 7; figureY[3] = 1;
+	}
+	createFigure4();
+
 	function writeFigure(){
 		for(var i=0; i<figureX.length; i++){
 			a[figureY[i]][figureX[i]] = 1;
@@ -120,15 +152,14 @@ $(document).ready(function(){
 		draw();
 	}
 	
-	// IDEA
-	// change speed interval for pressing DOWN
+	// TODO change speed interval for pressing DOWN
 	
 	// MOVEMENT
 	setInterval(function(){
 		moveMe('x');
 		draw();
 		
-	}, 400);
+	}, 800);
 	
 	// INPUT
 	$(document).keydown(function(e){

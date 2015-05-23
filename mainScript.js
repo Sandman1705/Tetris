@@ -120,12 +120,16 @@ $(document).ready(function(){
 	}
 	createFigure2();
 
+
+
+	// writes the figure into screen
 	function writeFigure(){
 		for(var i=0; i<figureX.length; i++){
 			a[figureY[i]][figureX[i]] = 1;
 		}
 	}
-	
+
+	// deletes the active figure
 	function deleteFigure(){
 		for(var i=0; i<figureX.length; i++){
 			a[figureY[i]][figureX[i]] = 0;
@@ -144,7 +148,7 @@ $(document).ready(function(){
 	}
 
 
-	
+	// makes the movement of the figure
 	function moveMe(direction){
 		deleteFigure();
 
@@ -189,7 +193,7 @@ $(document).ready(function(){
 		draw();
 	}
 	
-	// TODO change speed interval for pressing DOWN
+	// TODO maybe temporarily change the speed of interval for pressing DOWN for fancy effect
 	
 	// MOVEMENT
 	setInterval(function(){
@@ -198,7 +202,7 @@ $(document).ready(function(){
 		
 	}, 800);
 	
-	// INPUT
+	// INPUT from keyboard
 	$(document).keydown(function(e){
 		switch(e.which){
 			case 37: 	// left
@@ -213,7 +217,7 @@ $(document).ready(function(){
 				moveMe('d');
 				break;
 			case 90:	// z key, rotate left
-				moveMe('z');
+				moveMe('z');	// NOTE for some keyboards, z is on y button, we should change the bound keys later
 				break;
 			case 67:	// c key, rotate right
 				break;

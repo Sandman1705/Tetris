@@ -19,6 +19,7 @@
 5       x x x x         */
 
 
+// rotates the figure to the left
 function rotateFigureLeft(a, figureType, figureState, figureX, figureY){
    switch(figureType){
        case 1:
@@ -64,6 +65,13 @@ function rotateFigureLeft(a, figureType, figureState, figureX, figureY){
    }
 }
 
+// TODO implement this once rotateFigureRight is done
+function rotateFigureLeft(a, figureType, figureState, figureX, figureY){
+
+}
+
+// returns the index of figure block that needs to be moved in order for rotation to be done
+// figure2 requires only 1 block to be moved to archive the effect
 function getFigure2BlockToMove(figureX, figureY, figureState, rotation){
     var index;
     if(rotation == 'l'){
@@ -114,10 +122,8 @@ function getFigure2BlockToMove(figureX, figureY, figureState, rotation){
     }
 }
 
+// simple collision detection for a single block
 function collisionDetectionForBlock(a, moveX, moveY, blockX, blockY){
-    // moveX = 1 <===> move right
-    //alert(blockY + moveY);
-    //alert(blockX + moveX);
     if(a[blockY + moveY][blockX + moveX] != 0)
         return false;
     return true;

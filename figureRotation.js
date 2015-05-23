@@ -55,6 +55,7 @@ function rotateFigureLeft(a, figureType, figureState, figureX, figureY){
                figureY[blockToMove]--;
                return 1;
            }
+           return figureState;
            break;
        case 3:
            break;
@@ -66,7 +67,7 @@ function rotateFigureLeft(a, figureType, figureState, figureX, figureY){
 }
 
 // TODO implement this once rotateFigureRight is done
-function rotateFigureLeft(a, figureType, figureState, figureX, figureY){
+function rotateFigureRight(a, figureType, figureState, figureX, figureY){
 
 }
 

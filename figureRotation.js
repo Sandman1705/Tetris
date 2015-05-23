@@ -122,7 +122,7 @@ function getFigure2BlockToMove(figureX, figureY, figureState, rotation){
     }
 }
 
-// simple collision detection for a single block
+// simple collision detection for single block
 function collisionDetectionForBlock(a, moveX, moveY, blockX, blockY){
     if(a[blockY + moveY][blockX + moveX] != 0)
         return false;

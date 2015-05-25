@@ -133,10 +133,10 @@ $(document).ready(function(){
 	// Tetromino Z
 	// Color: Red
 	function createFigure3(){
-		figureX[0] = 5; figureY[0] = 1;
-		figureX[1] = 6; figureY[1] = 2;
-		figureX[2] = 4; figureY[2] = 1;
-		figureX[3] = 5; figureY[3] = 2;
+		figureX[0] = 4; figureY[0] = 1;
+		figureX[1] = 5; figureY[1] = 1;
+		figureX[2] = 5; figureY[2] = 2;
+		figureX[3] = 6; figureY[3] = 2;
 		figureType = 3; figureState = 1;
 	}
 	//	 x x
@@ -144,10 +144,10 @@ $(document).ready(function(){
 	// Tetromino S
 	// Color: Red
 	function createFigure4(){
-		figureX[0] = 5; figureY[0] = 1;
-		figureX[1] = 6; figureY[1] = 1;
-		figureX[2] = 4; figureY[2] = 2;
-		figureX[3] = 5; figureY[3] = 2;
+		figureX[0] = 4; figureY[0] = 2;
+		figureX[1] = 5; figureY[1] = 2;
+		figureX[2] = 5; figureY[2] = 1;
+		figureX[3] = 6; figureY[3] = 1;
 		figureType = 4; figureState = 1;
 	}
 
@@ -186,7 +186,7 @@ $(document).ready(function(){
 		figureType = 7; figureState = 1;
 	}
 
-	createFigure2();
+	createFigure4();
 	newFigure = false;
 
 	// writes the figure into screen
@@ -255,6 +255,7 @@ $(document).ready(function(){
 				figureState = rotateFigureLeft(a, figureType, figureState, figureX, figureY);
 				break;
 			case 'c':			// rotate right
+				figureState = rotateFigureRight(a, figureType, figureState, figureX, figureY);
 				break;
 		}
 
@@ -319,6 +320,7 @@ $(document).ready(function(){
 				moveMe('z');	// NOTE for some keyboards, z is on y button, we should change the bound keys later
 				break;
 			case 67:	// c key, rotate right
+				moveMe('c');
 				break;
 			default:
 				break;

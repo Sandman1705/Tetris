@@ -23,7 +23,7 @@
 function rotateFigureLeft(a, figureType, figureState, figureX, figureY){
    switch(figureType){
        case 1:
-           return;
+           return 1;
        case 2:
            var blockToMove = getFigure2BlockToMove(figureX, figureY, figureState, 'l');
            var blockX = figureX[blockToMove]; var blockY = figureY[blockToMove];
@@ -58,17 +58,92 @@ function rotateFigureLeft(a, figureType, figureState, figureX, figureY){
            return figureState;
            break;
        case 3:
+           // 1 ----> 2
+           if (figureState == 1 && collisionDetectionForBlock(a, 0, -2, figureX[2], figureY[2])
+                                && collisionDetectionForBlock(a, -2, 0, figureX[3], figureY[3])){
+               figureY[2]-=2;
+               figureX[3]-=2;
+               return 2;
+           }
+           // 2 ----> 1
+           else if (figureState == 2 && collisionDetectionForBlock(a, 0, 2, figureX[2], figureY[2])
+                                     && collisionDetectionForBlock(a, 2, 0, figureX[3], figureY[3])){
+               figureY[2]+=2;
+               figureX[3]+=2;
+               return 1;
+           }
            break;
        case 4:
+           // 1 ----> 2
+           if (figureState == 1 && collisionDetectionForBlock(a, 0, -2, figureX[0], figureY[0])
+                                && collisionDetectionForBlock(a, -2, 0, figureX[3], figureY[3])){
+               figureY[0]-=2;
+               figureX[3]-=2;
+               return 2;
+           }
+           // 2 ----> 1
+           else if (figureState == 2 && collisionDetectionForBlock(a, 0, 2, figureX[0], figureY[0])
+                                     && collisionDetectionForBlock(a, 2, 0, figureX[3], figureY[3])){
+               figureY[0]+=2;
+               figureX[3]+=2;
+               return 1;
+           }
            break;
        case 5:
+           break;
+       case 6:
+           break;
+       case 7:
            break;
    }
 }
 
 // TODO implement this once rotateFigureRight is done
 function rotateFigureRight(a, figureType, figureState, figureX, figureY){
-
+    switch(figureType) {
+        case 1:
+            return 1;
+        case 2:
+            break;
+        case 3:
+            // 1 ----> 2
+            if (figureState == 1 && collisionDetectionForBlock(a, 0, -2, figureX[2], figureY[2])
+                && collisionDetectionForBlock(a, -2, 0, figureX[3], figureY[3])){
+                figureY[2]-=2;
+                figureX[3]-=2;
+                return 2;
+            }
+            // 2 ----> 1
+            else if (figureState == 2 && collisionDetectionForBlock(a, 0, 2, figureX[2], figureY[2])
+                && collisionDetectionForBlock(a, 2, 0, figureX[3], figureY[3])){
+                figureY[2]+=2;
+                figureX[3]+=2;
+                return 1;
+            }
+            break;
+        case 4:
+            // 1 ----> 2
+            if (figureState == 1 && collisionDetectionForBlock(a, 0, -2, figureX[0], figureY[0])
+                && collisionDetectionForBlock(a, -2, 0, figureX[3], figureY[3])){
+                figureY[0]-=2;
+                figureX[3]-=2;
+                return 2;
+            }
+            // 2 ----> 1
+            else if (figureState == 2 && collisionDetectionForBlock(a, 0, 2, figureX[0], figureY[0])
+                && collisionDetectionForBlock(a, 2, 0, figureX[3], figureY[3])){
+                figureY[0]+=2;
+                figureX[3]+=2;
+                return 1;
+            }
+            break;
+        case 5:
+            break;
+        case 6:
+            break;
+        case 7:
+            break;
+    }
 }
 
 // returns the index of figure block that needs to be moved in order for rotation to be done
@@ -127,5 +202,6 @@ function getFigure2BlockToMove(figureX, figureY, figureState, rotation){
 function collisionDetectionForBlock(a, moveX, moveY, blockX, blockY){
     if(a[blockY + moveY][blockX + moveX] != 0)
         return false;
+    console.log("true ");
     return true;
 }

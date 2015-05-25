@@ -1,6 +1,7 @@
 $(document).ready(function(){
 	var height = $("#wrapper").height();
 	var width = $("#wrapper").width();		// not used
+	var newFigure = true; // true = new tetromino needs to be created; false = tetromino if falling
 	
 	var numY = 23;
 	var numX = 12;
@@ -72,6 +73,8 @@ $(document).ready(function(){
 
 	// x x
 	// x x
+	// Tetromino O
+	// Color: Yellow
 	function createFigure1(){
 		figureX[0] = 5; figureY[0] = 1;
 		figureX[1] = 6; figureY[1] = 2;
@@ -82,6 +85,8 @@ $(document).ready(function(){
 
 	//    x
 	//  x x x
+	// Tetromino T
+	// Color: Purple
 	function createFigure2(){
 		figureX[0] = 5; figureY[0] = 1;
 		figureX[1] = 6; figureY[1] = 2;
@@ -92,6 +97,8 @@ $(document).ready(function(){
 
 	//	x x
 	//    x x
+	// Tetromino Z
+	// Color: Red
 	function createFigure3(){
 		figureX[0] = 5; figureY[0] = 1;
 		figureX[1] = 6; figureY[1] = 2;
@@ -101,7 +108,8 @@ $(document).ready(function(){
 	}
 	//	 x x
 	// x x
-
+	// Tetromino S
+	// Color: Red
 	function createFigure4(){
 		figureX[0] = 5; figureY[0] = 1;
 		figureX[1] = 6; figureY[1] = 1;
@@ -111,6 +119,8 @@ $(document).ready(function(){
 	}
 
 	// x x x x
+	// Tetromino I
+	// Color: Cyan
 	function createFigure5(){
 		figureX[0] = 4; figureY[0] = 1;
 		figureX[1] = 5; figureY[1] = 1;
@@ -118,8 +128,34 @@ $(document).ready(function(){
 		figureX[3] = 7; figureY[3] = 1;
 		figureType = 5; figureState = 1;
 	}
-	createFigure2();
 
+	//     x
+	// x x x
+	// Tetromino L
+	// Color: Orange
+	function createFigure6(){
+		figureX[0] = 4; figureY[0] = 1;
+		figureX[1] = 5; figureY[1] = 1;
+		figureX[2] = 6; figureY[2] = 1;
+		figureX[3] = 6; figureY[3] = 2;
+		figureType = 6; figureState = 1;
+	}
+
+	// x
+	// x x x
+	// Tetromino J
+	// Color: Blue
+	function createFigure7(){
+		figureX[0] = 4; figureY[0] = 1;
+		figureX[1] = 5; figureY[1] = 1;
+		figureX[2] = 6; figureY[2] = 1;
+		figureX[3] = 4; figureY[3] = 2;
+		figureType = 7; figureState = 1;
+	}
+
+
+	createFigure2();
+	newFigure = false;
 
 
 	// writes the figure into screen
@@ -180,6 +216,9 @@ $(document).ready(function(){
 						figureY[i]++;
 					}
 				}
+				else{
+					newFigure = true;
+				}
 				break;
 			case 'z':			// rotate left
 				figureState = rotateFigureLeft(a, figureType, figureState, figureX, figureY);
@@ -198,6 +237,11 @@ $(document).ready(function(){
 	// MOVEMENT
 	setInterval(function(){
 		moveMe('x');
+		if (newFigure){
+			// TODO: Check if a row is filled and delete it;
+			createFigure2();
+			newFigure = false;
+		}
 		draw();
 		
 	}, 800);

@@ -28,12 +28,40 @@ div.block
 
 div.activeBlock
 {
-	background-color: aqua;
-	border: 1px solid blue;
+	/* background-color: aqua; */
+	border: 1px solid black;
 	box-sizing: border-box;
 }
 
 div.inactiveBlock
 {
 	background-color: gray;
+}
+
+.tetrominoI{
+	background-color: cyan;
+}
+
+.tetrominoL{
+	background-color: orange;
+}
+
+.tetrominoJ{
+	background-color: blue;
+}
+
+.tetrominoZ{
+	background-color: red;
+}
+
+.tetrominoS{
+	background-color: green;
+}
+
+.tetrominoO{
+	background-color: yellow;
+}
+
+.tetrominoT{
+	background-color: purple;
 }

@@ -1,6 +1,7 @@
 $(document).ready(function(){
-	var height = $("#wrapper").height();
-	var width = $("#wrapper").width();		// not used
+	var selector_wrapper = $("#wrapper"); // variable added to avoid duplicated JQuery selector (for height and width)
+	var height = selector_wrapper.height();
+	var width = selector_wrapper.width();		// not used
 	var newFigure = true; // true = new tetromino needs to be created; false = tetromino if falling
 	
 	var numY = 23;
@@ -37,7 +38,8 @@ $(document).ready(function(){
 	
 	//a[7][5] = 1;
 	//a[5][8] = 1;
-	var t = blockSize + "px";
+
+	var t = blockSize + "px"; // not used
 	
 	
 	
@@ -49,6 +51,36 @@ $(document).ready(function(){
 			for(var j=1; j<numX - 1; j++){
 				$("div#wrapper").append(function(){
 					var msg;
+					switch (a[i][j]){
+						case 1:
+							msg = "<div class='block activeBlock tetrominoO'></div>";
+							break;
+						case 2:
+							msg = "<div class='block activeBlock tetrominoT'></div>";
+							break;
+						case 3:
+							msg = "<div class='block activeBlock tetrominoZ'></div>";
+							break;
+						case 4:
+							msg = "<div class='block activeBlock tetrominoS'></div>";
+							break;
+						case 5:
+							msg = "<div class='block activeBlock tetrominoI'></div>";
+							break;
+						case 6:
+							msg = "<div class='block activeBlock tetrominoL'></div>";
+							break;
+						case 7:
+							msg = "<div class='block activeBlock tetrominoJ'></div>";
+							break;
+						default:
+							msg = "<div class='block inactiveBlock'></div>";
+							break;
+					}
+					return msg;
+
+					/* old code */
+					/*
 					if(a[i][j] == 1){
 						msg = "<div class='block activeBlock'></div>";
 						return msg;
@@ -57,6 +89,7 @@ $(document).ready(function(){
 						msg = "<div class='block inactiveBlock'></div>";
 						return msg;
 					}
+					/* */
 				});
 			}
 			//$("#wrapper").append("<br />");
@@ -153,15 +186,13 @@ $(document).ready(function(){
 		figureType = 7; figureState = 1;
 	}
 
-
 	createFigure2();
 	newFigure = false;
-
 
 	// writes the figure into screen
 	function writeFigure(){
 		for(var i=0; i<figureX.length; i++){
-			a[figureY[i]][figureX[i]] = 1;
+			a[figureY[i]][figureX[i]] = figureType;
 		}
 	}
 
@@ -239,7 +270,31 @@ $(document).ready(function(){
 		moveMe('x');
 		if (newFigure){
 			// TODO: Check if a row is filled and delete it;
-			createFigure2();
+			var randomFigure = Math.floor((Math.random() * 7) + 1);
+			switch (randomFigure){
+				case 1:
+					createFigure1();
+					break;
+				case 2:
+					createFigure2();
+					break;
+				case 3:
+					createFigure3();
+					break;
+				case 4:
+					createFigure4();
+					break;
+				case 5:
+					createFigure5();
+					break;
+				case 6:
+					createFigure6();
+					break;
+				case 7:
+				default:
+					createFigure7();
+					break;
+			}
 			newFigure = false;
 		}
 		draw();
@@ -264,6 +319,8 @@ $(document).ready(function(){
 				moveMe('z');	// NOTE for some keyboards, z is on y button, we should change the bound keys later
 				break;
 			case 67:	// c key, rotate right
+				break;
+			default:
 				break;
 		}
 	})

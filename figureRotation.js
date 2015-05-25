@@ -202,6 +202,5 @@ function getFigure2BlockToMove(figureX, figureY, figureState, rotation){
 function collisionDetectionForBlock(a, moveX, moveY, blockX, blockY){
     if(a[blockY + moveY][blockX + moveX] != 0)
         return false;
-    console.log("true ");
     return true;
 }

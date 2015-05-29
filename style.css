@@ -14,16 +14,12 @@ div.block
 	height
 	width
 			*/
-	
-	line-height: 0px;
 	display: inline-block;
 	border: 1px solid black;
 	box-sizing: border-box;
 	vertical-align: top;
 	height: 30px;
 	width: 30px;
-	padding: 0px;
-	margin: 0px;
 }
 
 div.activeBlock
